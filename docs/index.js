@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("function fib(num) {\n  var current = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;\n  var previous = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;\n  var temp;\n  var results = [];\n\n  while (num >= 0) {\n    results.push(current);\n    temp = current;\n    current = current + previous;\n    previous = temp;\n    num--;\n  }\n\n  return results;\n}\n\nconsole.log(fib(10));\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("function fib(num) {\n  if (num < 0) {\n    throw Error('Liczba wyników nie może być mniejsza od 0');\n  }\n\n  if (typeof num !== 'number') {\n    throw Error('Liczba wyników musi być liczbą');\n  }\n\n  if (num >= Number.MAX_SAFE_INTEGER) {\n    throw Error('Liczba wyników przekracza maksymalny bezpieczny zakres w javascript');\n  }\n\n  var current = 1,\n      previous = 0,\n      temp,\n      results = [];\n\n  while (num > 0) {\n    results.push(current);\n    temp = current;\n    current = current + previous;\n    previous = temp;\n    num--;\n  }\n\n  return results;\n}\n\nconsole.log(fib(5));\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
